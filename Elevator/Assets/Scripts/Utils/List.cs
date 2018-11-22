@@ -90,8 +90,6 @@ namespace Assets.Scripts.Tools
 			}
 			if (_centerOnItem)
 				_scrollRect.inertia = false;
-            Debug.LogError("_itemSize "+ _itemSize);
-            Debug.LogError("GetViewportSize " + GetViewportSize());
             _itemsVisible = Mathf.CeilToInt(GetViewportSize() / _itemSize);
 			var itemsToInstantiate = _itemsVisible;
 			if (_itemsVisible <= 1)
