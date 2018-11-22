@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Features.Windows;
 using Assets.Scripts.Logs;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Features
     {
         [Inject]
         private LiftService _liftService;
+        [Inject]
+        private WindowService _windowsService;
         [Inject]
         private ICustomLogger _logger;
 
@@ -35,6 +38,8 @@ namespace Assets.Scripts.Features
             if (result == true)
             {
                 _logger.Log($"floors are:{floors}");
+                _liftService.FloorsAmount = floors;
+                _windowsService.ChangeWindow(WindowType.LiftGame);
             }
             else
             {

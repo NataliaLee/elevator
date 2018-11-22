@@ -7,5 +7,7 @@ namespace Assets.Scripts.Core
 {
     public class LiftService
     {
+        public int FloorsAmount { get; set; }
+        
     }
 }

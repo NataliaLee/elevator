@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b5d3349f46eb84eab4f7049bc744cf, type: 3}
-  m_Name: WindowsSettings
+  m_Script: {fileID: 11500000, guid: 387af92ce3b86b24ba1c829b77b07a59, type: 3}
+  m_Name: GameWindowSetting
   m_EditorClassIdentifier: 
-  windowItems:
-  - {fileID: 11400000, guid: 7796e8afcfa298a49bf43944ed8a3389, type: 2}
-  - {fileID: 11400000, guid: b21f122469eb4784eaa891e1e5faaf9d, type: 2}
+  windowType: 2
+  windowPrefab: {fileID: 1185881564467416, guid: 49f72069c1cc5964e8d6c1f33d27ef73,
+    type: 2}
