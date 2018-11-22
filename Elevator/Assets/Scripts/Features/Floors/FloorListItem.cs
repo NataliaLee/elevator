@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Tools;
+﻿using Assets.Scripts.Features.Windows.Buttons;
+using Assets.Scripts.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace Assets.Scripts.Features.Floors
         [SerializeField]
         private Text _floorNumber;
         [SerializeField]
-        private LiftButton _upButton;
+        private HighlightedButton _upButton;
         [SerializeField]
-        private LiftButton _downButton;
+        private HighlightedButton _downButton;
         private FloorData _currentFloorData;
         private Action<int> _onLiftUpButtonClicked;
         private Action<int> _onLiftDownButtonClicked;

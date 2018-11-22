@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Features.Floors
+namespace Assets.Scripts.Features.Windows.Buttons
 {
-    public class LiftButton: MonoBehaviour
+    public class HighlightedButton: MonoBehaviour
     {
         [SerializeField]
-        private Button _liftButton;
+        private Button _button;
         [SerializeField]
         private Image _highlightImage;
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Features.Floors
 
         private void Awake()
         {
-            _liftButton.onClick.AddListener(OnClick);
+            _button.onClick.AddListener(OnClick);
         }
 
         private void OnClick()

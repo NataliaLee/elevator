@@ -38,6 +38,11 @@ namespace Assets.Scripts.Features
             if (result == true)
             {
                 _logger.Log($"floors are:{floors}");
+                if (floors <= 0)
+                {
+                    _logger.LogError("amount of floors cant be <=0");
+                    return;
+                }
                 _liftService.FloorsAmount = floors;
                 _windowsService.ChangeWindow(WindowType.LiftGame);
             }
