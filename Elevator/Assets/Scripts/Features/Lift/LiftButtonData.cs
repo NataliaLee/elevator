@@ -22,5 +22,10 @@ namespace Assets.Scripts.Features.Lift
         {
             IsPushed = !IsPushed;
         }
+
+        public void Reset()
+        {
+            IsPushed = false;
+        }
     }
 }

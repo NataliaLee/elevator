@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Logs;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Logs;
 using Assets.Scripts.Tools;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Features.Floors
     {
         [Inject]
         private ICustomLogger _logger;
+        [Inject]
+        private LiftService _liftService;
 
         [SerializeField]
         private List _floorsList;
@@ -31,6 +34,21 @@ namespace Assets.Scripts.Features.Floors
             }
             _floorsList.onItemLoaded += OnItemLoaded;
             _floorsList.Create(floorsAmount, _floorItem);
+            _liftService.OnArrivedOnFloor += (floor, direction) =>
+            {
+                if (floor >= _floorsData.Length)
+                    return;
+                _floorsData[floor].Reset();
+                UpdateList();
+            };
+        }
+
+        private void UpdateList()
+        {
+            foreach (var listItem in _floorsList.ItemsList)
+            {
+                ((FloorListItem)listItem).UpdateView();
+            }
         }
 
         private void OnItemLoaded(ListItemBase item)
@@ -48,6 +66,13 @@ namespace Assets.Scripts.Features.Floors
             }
             var floorData = _floorsData[floorNumber];
             _logger.Log($"clicked UP on floor {floorNumber}. button is on: {floorData.UpIsPushed}");
+            if (floorData.UpIsPushed)
+            {
+                _liftService.AddFloor(Direction.Up, floorNumber);
+            }
+            else {
+                _liftService.RemoveFloor(Direction.Up, floorNumber);
+            }
         }
 
         private void OnDownLiftButtonPressed(int floorNumber)
@@ -59,6 +84,14 @@ namespace Assets.Scripts.Features.Floors
             }
             var floorData = _floorsData[floorNumber];
             _logger.Log($"clicked DOWN on floor {floorNumber}. button is on: {floorData.DownIsPushed}");
+            if (floorData.DownIsPushed)
+            {
+                _liftService.AddFloor(Direction.Down, floorNumber);
+            }
+            else
+            {
+                _liftService.RemoveFloor(Direction.Down, floorNumber);
+            }
         }
     }
 }

@@ -192,6 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonsHolder: {fileID: 224466135170422158}
+  _currenLiftPosition: {fileID: 114925323560610312}
+  _currentDirection: {fileID: 114475321779004120}
+  _stopButton: {fileID: 114666879948235188}
 --- !u!114 &114221566268266150
 MonoBehaviour:
   m_ObjectHideFlags: 1
