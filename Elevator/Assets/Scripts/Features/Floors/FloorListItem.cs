@@ -27,6 +27,7 @@ namespace Assets.Scripts.Features.Floors
             _currentFloorData = floorData;
             _onLiftUpButtonClicked = onLiftUpButtonClicked;
             _onLiftDownButtonClicked = onLiftDownButtonClicked;
+            _downButton.gameObject.SetActive(floorData.FloorNumber>0);            
             UpdateView();
         }
 

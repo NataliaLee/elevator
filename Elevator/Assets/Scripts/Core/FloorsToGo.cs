@@ -102,7 +102,6 @@ namespace Assets.Scripts.Core
         
         private int GetNearest(int currentFloor)
         {//пока не работает
-            _logger.LogError($"GetNearest {currentFloor}");
             if (_liftBtnsToGo.Count > 0)
                 return _liftBtnsToGo.First();
             if (_upToGo.Count > 0)

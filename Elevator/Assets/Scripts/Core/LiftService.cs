@@ -8,6 +8,8 @@ using UnityEngine;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Assets.Scripts.Logs;
+using Assets.Scripts.ResourceHandlers;
+using Assets.Scripts.Features.Tools;
 
 namespace Assets.Scripts.Core
 {
@@ -31,15 +33,17 @@ namespace Assets.Scripts.Core
         public event Action<Direction> OnChangeDirection;
 
         private ICustomLogger _logger;
+        private Instantiator _instantiator;
         private float _currentPosition;
         private int _currentTargetFloor;
         private FloorsToGo _floorsToGo;
         private bool _stopped;
         private TweenerCore<float, float, FloatOptions> _currentMovement;
 
-        public LiftService(ICustomLogger logger)
+        public LiftService(ICustomLogger logger, Instantiator instantiator)
         {
             _logger = logger;
+            _instantiator = instantiator;
             _floorsToGo = new FloorsToGo(_logger);
         }
 
@@ -117,6 +121,8 @@ namespace Assets.Scripts.Core
             else
             {
                 _logger.Log($"<color=blue>lift arrived on target floor {CurrentFloor}</color>");
+                var message=_instantiator.LoadGameObjectOnScene<MessageTooltip>(ResourceLocator.MESSAGE_TOOLTIP);
+                message.Show("Open doors");
                 OnArrivedOnFloor(CurrentFloor, CurrentDirection);
                 RemoveFloor(CurrentFloor);
                 GoToNextFloor();
